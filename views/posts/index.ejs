@@ -1,0 +1,17 @@
+<!-- views/posts/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href='/posts/new'>글 쓰기</a>
+    <% rows.forEach(element => { %>
+        <%= element.title %>
+        <a href='/posts/show/<%= element.id %>'>상세보기</a>
+    <% }); %> 
+</body>
+</html>
