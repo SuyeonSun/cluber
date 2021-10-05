@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-// var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
@@ -14,6 +13,7 @@ app.use(methodOverride('_method'));
 // routes
 app.use('/', require('./routes/home'));
 app.use('/posts', require('./routes/posts'));
+app.use('/register', require('./routes/register'));
 
 // port setting
 var port = 3000;

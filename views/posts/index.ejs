@@ -1,4 +1,5 @@
 <!-- views/posts/index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,13 @@
 </head>
 <body>
     <a href='/posts/new'>글 쓰기</a>
+
+    <% if(rows == null || rows.length == 0){ %>
+        <tr>
+          <td> 아직 작성된 글이 없습니다. </td>
+        </tr>
+    <% } %>
+
     <% rows.forEach(element => { %>
         <%= element.title %>
         <a href='/posts/show/<%= element.id %>'>상세보기</a>
