@@ -11,25 +11,43 @@ exports.index = (req, res) => {
 
 // new
 exports.new = (req, res) => {
-    res.render('posts/new');
+    if (req.user == undefined) {
+        res.render('login/login');
+      }
+      else {
+        res.render('posts/new', { user: req.user});
+      }
 }
+
 
 // create
 exports.create = (req, res) => {
     var title = req.body.title;
     var content = req.body.content;
-    model.query(`INSERT INTO board(title, body) VALUES ("${title}", "${content}")`, (err, results) => {
+    var username = req.body.username
+    model.query(`INSERT INTO board(title, body, username) VALUES ("${title}", "${content}", "${username}")`, (err, results) => {
         if(err) throw err;
         res.redirect('/posts');
     });
 }
 
 // show
+// exports.show = (req, res) => {
+//     model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
+//         if(err) throw err;
+//         res.render('posts/show', {rows : rows[0]});
+//     })
+// }
 exports.show = (req, res) => {
-    model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
-        if(err) throw err;
-        res.render('posts/show', {rows : rows[0]});
-    })
+    if (req.user == undefined) {
+        res.render('posts/show', {rows : rows[0], logged: false});
+    }
+    else {
+        model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
+            if(err) throw err;
+            res.render('posts/show', {rows : rows[0], logged: true, user : req.user});
+        })
+    }
 }
 
 // edit

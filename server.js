@@ -35,4 +35,10 @@ app.use('/', require('./routes/home'));
 app.use('/posts', require('./routes/posts'));
 app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
+app.get('/logout', function(req, res){
+    req.logout();
+    req.session.save(function(){
+      res.redirect('/');
+    });
+});
 

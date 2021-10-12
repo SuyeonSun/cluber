@@ -19,6 +19,7 @@
 
     <% rows.forEach(element => { %>
         <%= element.title %>
+        <%= element.username %> <!--작성자(username)-->
         <a href='/posts/show/<%= element.id %>'>상세보기</a>
     <% }); %> 
 </body>

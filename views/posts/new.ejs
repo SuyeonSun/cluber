@@ -9,6 +9,7 @@
 <body>
     <h1>글 작성 페이지</h1>
     <form action="/posts/create" method="post">
+        <div>작성자(유저네임) <input type="text" name="username" value="<%=user.username%>"></div>
         <div>제목 <input type="text" name="title"></div>
         <div>내용 <input type="textarea" name="content"></div>
         <button type="submit">작성하기</button>
