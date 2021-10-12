@@ -15,6 +15,11 @@
         <P>제 웹사이트를 방문해 주셔서 감사합니다!</p>
       </div>
 
+      <% if(!logged) { %>
+        <h2> 아직 회원이 아니세요? 회원가입하고 서비스를 이용해보세요!</h2>
+      <% } else { %>
+        <label><%=user.username %></label>
+      <% } %>
     </div>
   </body>
 </html>

@@ -5,6 +5,6 @@ const router = express.Router();
 
 const Register = require('../controllers/register/Register');
 router.get('/', Register.index);
-router.post('/register', Register.register);
+router.post('/new', Register.new);
 
 module.exports = router;
