@@ -8,11 +8,15 @@
     작성자 <%= rows.username %> <br>
     제목 <%= rows.title %> <br>
     내용 <%= rows.body %> <br>
+    파일 <img src="/posts/images/<%= rows.photo_url %>" height="500" width="500"> <br>
 
-    <% if ((logged) & (user.username == rows.username)) { %>
-        <a href='/posts/edit/<%= rows.id %>'>수정하기</a>
-        <a href='/posts/delete/<%= rows.id %>'>삭제하기</a>
-    <% } %>
+    <% if(logged) { %>
+        <% if(user.username == rows.username) { %>
+            <a href='/posts/edit/<%= rows.id %>'>수정하기</a>
+            <a href='/posts/delete/<%= rows.id %>'>삭제하기</a>
+        <% } %>
+    <% } %>  
+   
 </body>
 </html>
 

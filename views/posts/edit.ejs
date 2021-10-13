@@ -9,7 +9,7 @@
 <body>
     <h1>수정 페이지 입니다.</h1>
     <form action="/posts/update" method="post">
-        <input type="hidden" name="id" value="<%=result.id%>"/> 
+        <input type="hidden" name="id" value="<%=result.id%>"/>
         <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div>
         <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
         <button type="submit">수정하기</button>

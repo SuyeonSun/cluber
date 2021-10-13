@@ -19,7 +19,8 @@ var bkfd2Password = require("pbkdf2-password"); // npm install --save pbkdf2-pas
 var hasher = bkfd2Password();
 
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname+'/public'));
+// app.use(express.static(__dirname+'/public'));
+app.use('/posts/images',express.static('uploads')); // 파일 업로드
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
