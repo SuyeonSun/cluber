@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+</head>
+<body>
+    <h1>수정 페이지 입니다.</h1>
+    <form action="/community/update" method="post">
+        <input type="hidden" name="id" value="<%=result.id%>"/>
+        <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div>
+        <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
+        <div>
+            <label for="firstKindU">동아리 종류 선택</label>
+            <select id="firstKindU" name="firstKindU" onchange="KindChange(this)">
+              <option>선택안함</option>
+              <option value="공연/예술/음악">공연/예술/음악</option>
+              <option value="봉사">봉사</option>
+              <option value="컴퓨터/IT">컴퓨터/IT</option>
+            </select>
+        </div>
+
+        <!--소분류 select tag-->
+        <div>
+            <label for="secondKindU">동아리 이름 선택</label>
+            <select id="secondKindU" name="secondKindU">
+              <option>선택안함</option>
+            </select>
+        </div>
+
+        <!--js-->
+        <script>
+            function KindChange(e) {
+            var art = ["동아리1"];
+            var vol = ["동아리2", "동아리3", "동아리4"];
+            var com = ["천안", "세종", "논산"];
+            var target = document.getElementById("secondKindU");
+            if(e.value == "공연/예술/음악") var d = art;
+            else if(e.value == "봉사") var d = vol;
+            else if(e.value == "컴퓨터/IT") var d = com;
+
+            target.options.length = 0;
+            
+            for (x in d) {
+                var opt = document.createElement("option");
+                opt.value = d[x];
+                opt.innerHTML = d[x];
+                target.appendChild(opt);
+            }   
+        }
+        </script>
+
+        <!--일주일 활동 투자 시간 select tag-->
+        <div>
+            <label for="investedTime">일주일 활동 투자 시간</label>
+                <select id="investedTime" name="investedTime">
+                    <option>선택안함</option>
+                    <option value="0-3">0-3</option>
+                    <option value="3-6">3-6</option>
+                    <option value="6-9">6-9</option>
+                    <option value="9이상">9이상</option>
+                </select>
+        </div>
+
+        <!--평점 select tag-->
+            <div>
+                <label for="star">동아리 평점</label>
+                    <select id="star" name="star">
+                        <option>선택안함</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+            </div>
+        <button type="submit">수정하기</button>
+    </form>
+</body>
+</html>

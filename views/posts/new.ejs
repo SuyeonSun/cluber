@@ -17,7 +17,7 @@
     
     <h1>글 작성 페이지</h1>
     <form action="/posts/create" method="post" enctype="multipart/form-data">
-        <div>작성자(유저네임) <input type="text" name="username" value="<%=user.username%>"></div>
+        <div>작성자(유저네임) <input type="hidden" name="username" value="<%=user.username%>"></div>
         <div>제목 <input type="text" name="title"></div>
         <div>내용 <input type="textarea" name="content"></div>
         <input type="file" id="uploadFile" name="photo"> 

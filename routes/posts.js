@@ -13,7 +13,8 @@ router.get('/new', Posts.new);
 router.post('/create', upload.single('photo'), Posts.create);
 router.get('/show/:id', Posts.show);
 router.get('/edit/:id', Posts.edit);
-router.post('/update', Posts.update);
+// router.post('/update', Posts.update);
+router.post('/update', upload.single('photo'), Posts.update);
 router.get('/delete/:id', Posts.delete);
 
 module.exports = router;

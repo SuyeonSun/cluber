@@ -8,14 +8,20 @@
     작성자 <%= rows.username %> <br>
     제목 <%= rows.title %> <br>
     내용 <%= rows.body %> <br>
-    파일 <img src="/posts/images/<%= rows.photo_url %>" height="500" width="500"> <br>
+    firstKindU <%= rows.firstKindU %> <br>
+    secondKindU <%= rows.secondKindU %> <br>
+    investedTime<%= rows.investedTime %> <br>
+    star<%= rows.star %> <br>
 
     <% if(logged) { %>
         <% if(user.username == rows.username) { %>
-            <a href='/posts/edit/<%= rows.id %>'>수정하기</a>
-            <a href='/posts/delete/<%= rows.id %>'>삭제하기</a>
+            link will be showed.
+            <a href='/community/edit/<%= rows.id %>'>수정하기</a>
+            <a href='/community/delete/<%= rows.id %>'>삭제하기</a>
         <% } %>
     <% } %>  
    
 </body>
 </html>
+
+    

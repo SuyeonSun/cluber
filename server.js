@@ -20,6 +20,7 @@ var hasher = bkfd2Password();
 
 app.set('view engine', 'ejs');
 // app.use(express.static(__dirname+'/public'));
+app.use(express.static('assets')); 
 app.use('/posts/images',express.static('uploads')); // 파일 업로드
 
 app.use(express.urlencoded({extended:true}));
@@ -42,4 +43,5 @@ app.get('/logout', function(req, res){
       res.redirect('/');
     });
 });
+app.use('/community', require('./routes/community'));
 

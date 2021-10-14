@@ -63,11 +63,22 @@ exports.edit = (req, res) => {
 }
 
 // update
+// exports.update = (req, res) => {
+//     var id = req.body.id;
+//     var title = req.body.title;
+//     var content = req.body.content;
+//     model.query(`UPDATE board SET title = "${title}", body = "${content}" where id = ${id}`, (err, rows) => {
+//         if(err) throw err;
+//         res.redirect(`/posts/show/${id}`);
+//     });
+// }
+
 exports.update = (req, res) => {
     var id = req.body.id;
     var title = req.body.title;
     var content = req.body.content;
-    model.query(`UPDATE board SET title = "${title}", body = "${content}" where id = ${id}`, (err, rows) => {
+    let filename = req.file.filename;
+    model.query(`UPDATE board SET title = "${title}", body = "${content}", photo_url = "${filename}" where id = ${id}`, (err, rows) => {
         if(err) throw err;
         res.redirect(`/posts/show/${id}`);
     });
