@@ -1,14 +1,12 @@
-<!-- views/posts/index.ejs -->
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
+    <h1>홍보 게시판</h1>
     <a href='/posts/new'>글 쓰기</a>
 
     <% if(rows == null || rows.length == 0){ %>
@@ -22,5 +20,6 @@
         <%= element.username %> <!--작성자(username)-->
         <a href='/posts/show/<%= element.id %>'>상세보기</a>
     <% }); %> 
+</div>
 </body>
 </html>

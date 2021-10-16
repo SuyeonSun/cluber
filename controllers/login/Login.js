@@ -1,4 +1,9 @@
 // index 
 exports.index = (req, res) => {
-    res.render('login/login');
+    if (req.user == undefined) {
+        res.render('login/login', {logged: false});
+    }
+    else {
+        res.render('login/login', {logged: true, user: req.user});
+      }
 }

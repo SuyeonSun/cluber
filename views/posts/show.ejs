@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <%- include('../partials/head') %>
-</head>
-<body>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
     <h1>상세 페이지 입니다.</h1>
     작성자 <%= rows.username %> <br>
     제목 <%= rows.title %> <br>
@@ -17,5 +19,6 @@
         <% } %>
     <% } %>  
    
+</div>
 </body>
 </html>

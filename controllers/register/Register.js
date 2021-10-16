@@ -5,7 +5,12 @@ var hasher = bkfd2Password();
 
 // index 
 exports.index = (req, res) => {
-    res.render('register/register');
+    if (req.user == undefined) {
+        res.render('register/register', {logged: false});
+    }
+    else {
+        res.render('register/register', {logged: true, user: req.user});
+    }
 }
 
 // new 

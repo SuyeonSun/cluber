@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
-</head>
-<body>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
     <h1>수정 페이지 입니다.</h1>
+    <p>파일을 필수로 입력해야 합니다.</p>
     <form action="/posts/update" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%=result.id%>"/>
         <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div>
@@ -15,6 +16,6 @@
         <div>파일 <input type="file" id="uploadFile" name="photo" value = "<%= result.photo_url %>" height="500" width="500"> </div>
         <button type="submit">수정하기</button>
     </form>
-    </form>
+</div>
 </body>
 </html>

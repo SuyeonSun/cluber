@@ -2,20 +2,29 @@ const model = require('../../config/database');
 
 // index 
 exports.index = (req, res) => {
-    model.query(`SELECT * FROM board`, (err, rows) => {
-        if(err) throw err;
-        console.log(rows);
-        res.render('posts/index', {rows : rows});
-    })
+    if (req.user == undefined) {
+        model.query(`SELECT * FROM board`, (err, rows) => {
+            if(err) throw err;
+            console.log(rows);
+            res.render('posts/index', {logged: false, rows : rows});
+        })
+    }
+    else{
+        model.query(`SELECT * FROM board`, (err, rows) => {
+            if(err) throw err;
+            console.log(rows);
+            res.render('posts/index', {logged: true, user: req.user, rows : rows});
+        })
+    }
 }
 
 // new
 exports.new = (req, res) => {
     if (req.user == undefined) {
-        res.render('login/login');
+        res.render('login/login', {logged: false});
     }
     else {
-        res.render('posts/new', { user: req.user});
+        res.render('posts/new', {logged: true, user: req.user});
     }
 }
 
@@ -56,10 +65,15 @@ exports.show = (req, res) => {
 
 // edit
 exports.edit = (req, res) => {
-    model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
-        if(err) throw err;
-        res.render('posts/edit', {result : rows[0]});
-    })
+    if (req.user == undefined) {
+        res.render('posts/edit', {logged: false});
+    }
+    else{
+        model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
+            if(err) throw err;
+            res.render('posts/edit', {logged: true, user : req.user, result : rows[0]});
+        })
+    }
 }
 
 // update
