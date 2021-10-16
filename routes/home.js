@@ -16,7 +16,12 @@ router.get('/', function(req, res){
 });
 
 router.get('/about', function(req, res){
-  res.render('home/about');
+  if (req.user == undefined) {
+    res.render('home/welcome', {logged: false});
+  }
+  else {
+    res.render('home/about', {logged: true, user: req.user});
+  }
 });
 
 module.exports = router;

@@ -3,15 +3,28 @@ var app = express();
 
 const session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
-const db = require('./config/database');// 
+// const db = require('./config/database');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+// app.use(session({
+//     secret: '1234DSFs@adf1234!@#$asd',
+//     resave: false,
+//     saveUninitialized: false,
+//   }));
+
 app.use(session({
-    secret: '1234DSFs@adf1234!@#$asd',
-    resave: false,
-    saveUninitialized: false,
-  }));
+  secret: '1234DSFs@adf1234!@#$asd',
+  resave: false,
+  saveUninitialized: true,
+	store: new MySQLStore({
+    	host: 'localhost',
+    	user: 'suyeon',
+    	password :'sun5821',
+    	database : 'grad_pro'
+    })
+}));
+
 app.use(passport.initialize()); // passport 사용 하도록 세팅
 app.use(passport.session()); // passport 사용 시 session을 활용
 

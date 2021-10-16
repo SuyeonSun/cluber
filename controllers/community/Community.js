@@ -2,36 +2,50 @@ const model = require('../../config/database');
 
 // index
 exports.index = (req, res) => {
-    model.query(`SELECT * FROM community`, (err, rows) => {
-        if(err) throw err;
-        console.log(rows);
-        res.render('community/index', {rows : rows});
-    })
+    if (req.user == undefined) {
+        model.query(`SELECT * FROM community`, (err, rows) => {
+            if(err) throw err;
+            console.log(rows);
+            res.render('community/index', {rows : rows, logged: false});
+        })
+    }
+    else{
+        model.query(`SELECT * FROM community`, (err, rows) => {
+            if(err) throw err;
+            console.log(rows);
+            res.render('community/index', {rows : rows, logged: true, user: req.user});
+        })
+    }
 }
 
 // new
 exports.new = (req, res) => {
     if (req.user == undefined) {
-        res.render('login/login');
+        res.render('login/login', {logged: false});
     }
     else{
-        res.render('community/new', { user: req.user});
+        res.render('community/new', {logged: true, user: req.user});
     }
 }
 
 // create
 exports.create = (req, res) => {
-    var title = req.body.title;
-    var content = req.body.content;
-    var username = req.body.username;
-    var firstKindU = req.body.firstKindU;
-    var secondKindU  = req.body.secondKindU;
-    var investedTime = req.body.investedTime;
-    var star = req.body.star;
-    model.query(`INSERT INTO community(title, body, username, firstKindU, secondKindU, investedTime, star) VALUES ("${title}", "${content}", "${username}", "${firstKindU}", "${secondKindU}", "${investedTime}", "${star}")`, (err, results) => {
-        if(err) throw err;
-        res.redirect('/community');
+    if (req.user == undefined) {
+        res.render('login/login', {logged: false});
+    }
+    else{
+        var title = req.body.title;
+        var content = req.body.content;
+        var username = req.body.username;
+        var firstKindU = req.body.firstKindU;
+        var secondKindU  = req.body.secondKindU;
+        var investedTime = req.body.investedTime;
+        var star = req.body.star;
+        model.query(`INSERT INTO community(title, body, username, firstKindU, secondKindU, investedTime, star) VALUES ("${title}", "${content}", "${username}", "${firstKindU}", "${secondKindU}", "${investedTime}", "${star}")`, (err, results) => {
+            if(err) throw err;
+            res.redirect('/community', {logged: true, user: req.user});
     });
+    }
 }
 
 // show
@@ -51,10 +65,15 @@ exports.show = (req, res) => {
 
 // edit
 exports.edit = (req, res) => {
-    model.query(`SELECT * FROM community where id = ?`, [req.params.id], (err, rows) => {
-        if(err) throw err;
-        res.render('community/edit', {result : rows[0]});
-    })
+    if (req.user == undefined) {
+        res.render('community/edit', {logged: false});
+    }
+    else{
+        model.query(`SELECT * FROM community where id = ?`, [req.params.id], (err, rows) => {
+            if(err) throw err;
+            res.render('community/edit', {result : rows[0], logged: true, user : req.user});
+        })
+    }
 }
 
 // update

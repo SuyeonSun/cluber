@@ -10,9 +10,15 @@
 
     <div class="container mb-3">
 
-      <h2 class="mb-3">About</h2>
+      <div class="jumbotron"> <!--jumbotron이라는 class를 사용하였는데, 이는 bootstrap에서 제공하는 컴포넌트입니다.-->
+        <% if(!logged) { %>
+          <p> 아직 회원이 아니세요? 회원가입하고 서비스를 이용해보세요!</p>
+        <% } else { %>
+          <label><%=user.username %>님, 환영합니다!</label>
+        <% } %>
+      </div>
 
-      <P>이 사이트는 <a href="http://a-mean-blog.com/ko/blog/Node-JS-첫걸음/게시판-만들기">http://a-mean-blog.com/ko/blog/Node-JS-첫걸음/게시판-만들기</a>에서 작성되었습니다!</p>
+      <h1>About 페이지</h1>
 
     </div>
   </body>

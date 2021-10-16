@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
-</head>
-<body>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
     <h1>수정 페이지 입니다.</h1>
     <form action="/community/update" method="post">
         <input type="hidden" name="id" value="<%=result.id%>"/>
@@ -79,5 +79,6 @@
             </div>
         <button type="submit">수정하기</button>
     </form>
+</div>
 </body>
 </html>

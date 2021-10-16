@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include('../partials/head') %>
 </head>
 <body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
     <h1>커뮤니티 글 작성 페이지</h1>
-
     <form action="/community/create" method="post">
         <div>작성자(유저네임) <input type="hidden" name="username" value="<%=user.username%>"></div>
         <div>제목 <input type="text" name="title"></div>
@@ -84,5 +82,6 @@
 
         <button type="submit">작성하기</button>
     </form>
+</div>
 </body>
 </html>
