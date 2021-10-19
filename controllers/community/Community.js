@@ -96,13 +96,12 @@ exports.delete = (req, res) => {
 }
 
 // comment
-// add
-// exports.add = (req, res) => {
-//     var username = req.body.username;
-//     var text = req.body.text;
+exports.add = (req, res) => {
+    var username = req.body.username;
+    var text = req.body.text;
 
-//     model.query(`INSERT INTO grad_pro SET ?`,{username, text}, (err,rows)=>{
-//             if(err) throw err;
-//             res.json({success : 1, message: 'Success Create'});
-//     }) 
-// }
+    model.query(`INSERT INTO comment SET ?`,{username, text}, (err,rows)=>{
+            if(err) throw err;
+            res.json({success : 1, message: 'Success Create'});
+    }) 
+}

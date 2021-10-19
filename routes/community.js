@@ -13,6 +13,6 @@ router.post('/update', Community.update);
 router.get('/delete/:id', Community.delete);
 
 // comment
-//router.post('/add', Community.add);
+router.post('/add', Community.add);
 
 module.exports = router;
