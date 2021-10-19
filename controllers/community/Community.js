@@ -30,10 +30,6 @@ exports.new = (req, res) => {
 
 // create
 exports.create = (req, res) => {
-    if (req.user == undefined) {
-        res.render('login/login', {logged: false});
-    }
-    else{
         var title = req.body.title;
         var content = req.body.content;
         var username = req.body.username;
@@ -43,22 +39,20 @@ exports.create = (req, res) => {
         var star = req.body.star;
         model.query(`INSERT INTO community(title, body, username, firstKindU, secondKindU, investedTime, star) VALUES ("${title}", "${content}", "${username}", "${firstKindU}", "${secondKindU}", "${investedTime}", "${star}")`, (err, results) => {
             if(err) throw err;
-            res.redirect('/community', {logged: true, user: req.user});
+            res.redirect('/community');
     });
-    }
 }
 
 // show
 exports.show = (req, res) => {
     model.query(`SELECT * FROM community where id = ?`, [req.params.id], (err, rows) => {
-        if(err) throw err;
         // 로그인 안된 상태
         if(req.user == undefined) {
             res.render('community/show', {rows : rows[0], logged: false});
         }
         // 로그인 된 상태
         else{
-            res.render('community/show', {rows : rows[0], logged: true, user : req.user});
+            res.render('community/show', {rows : rows[0], logged: true, user: req.user});
         }
     })
 }
@@ -100,3 +94,15 @@ exports.delete = (req, res) => {
         res.redirect('/community');
     });
 }
+
+// comment
+// add
+// exports.add = (req, res) => {
+//     var username = req.body.username;
+//     var text = req.body.text;
+
+//     model.query(`INSERT INTO grad_pro SET ?`,{username, text}, (err,rows)=>{
+//             if(err) throw err;
+//             res.json({success : 1, message: 'Success Create'});
+//     }) 
+// }
