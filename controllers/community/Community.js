@@ -99,6 +99,8 @@ exports.delete = (req, res) => {
 exports.add = (req, res) => {
     var username = req.body.username;
     var text = req.body.text;
+    // var id = req.body.id;
+    // console.log(id);
 
     model.query(`INSERT INTO comment SET ?`,{username, text}, (err,rows)=>{
             if(err) throw err;
