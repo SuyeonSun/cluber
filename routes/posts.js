@@ -17,4 +17,7 @@ router.get('/edit/:id', Posts.edit);
 router.post('/update', upload.single('photo'), Posts.update);
 router.get('/delete/:id', Posts.delete);
 
+// comment
+
+
 module.exports = router;

@@ -59,7 +59,7 @@ exports.create = (req, res) => {
 
 exports.show = (req, res) => {
     model.query(`SELECT * FROM community where id = ?`, [req.params.id], (err, rows) => {
-        model.query(`SELECT * FROM comment where board_id=?`, [req.params.id], (err, comments) => {
+        model.query(`SELECT * FROM comcomment where board_id=?`, [req.params.id], (err, comments) => {
             if (err) throw err;
             // 로그인 안된 상태
             if(req.user == undefined) {
@@ -117,7 +117,7 @@ exports.add = (req, res) => {
     var text = req.body.text;
     var board_id = req.body.board_id;
 
-    model.query(`INSERT INTO comment SET ?`,{username, text, board_id}, (err,rows)=>{
+    model.query(`INSERT INTO comcomment SET ?`,{username, text, board_id}, (err,rows)=>{
             if(err) throw err;
             res.json({success : 1, message: 'Success Create'});
     }) 

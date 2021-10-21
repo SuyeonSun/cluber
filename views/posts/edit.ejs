@@ -12,9 +12,51 @@
     <form action="/posts/update" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%=result.id%>"/>
         <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div>
-        <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
-        <div>파일 <input type="file" id="uploadFile" name="photo" value = "<%= result.photo_url %>" height="500" width="500"> </div>
-        <button type="submit">수정하기</button>
+        
+        <div>
+          <label for="firstKindU">동아리 종류 선택</label>
+          <select id="firstKindU" name="firstKindU" onchange="KindChange(this)">
+            <option>선택안함</option>
+            <option value="공연/예술/음악">공연/예술/음악</option>
+            <option value="봉사">봉사</option>
+            <option value="컴퓨터/IT">컴퓨터/IT</option>
+          </select>
+      </div>
+
+        <!--소분류 select tag-->
+        <div>
+          <label for="secondKindU">동아리 이름 선택</label>
+          <select id="secondKindU" name="secondKindU">
+            <option>선택안함</option>
+          </select>
+      </div>
+
+      <!--js-->
+      <script>
+          function KindChange(e) {
+          var art = ["동아리1"];
+          var vol = ["동아리2", "동아리3", "동아리4"];
+          var com = ["천안", "세종", "논산"];
+          var target = document.getElementById("secondKindU");
+          if(e.value == "공연/예술/음악") var d = art;
+          else if(e.value == "봉사") var d = vol;
+          else if(e.value == "컴퓨터/IT") var d = com;
+
+          target.options.length = 0;
+          
+          for (x in d) {
+              var opt = document.createElement("option");
+              opt.value = d[x];
+              opt.innerHTML = d[x];
+              target.appendChild(opt);
+          }   
+      }
+      </script>
+
+    <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
+    <div>파일 <input type="file" id="uploadFile" name="photo" value = "<%= result.photo_url %>" height="500" width="500"> </div>
+
+    <button type="submit">수정하기</button>
     </form>
 </div>
 </body>
