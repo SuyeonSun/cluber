@@ -9,6 +9,7 @@
     <h1>상세 페이지 입니다.</h1>
     작성자 <%= rows.username %> <br>
     제목 <%= rows.title %> <br>
+    동아리 이름 <%= rows.secondKindU %> <br>
     내용 <%= rows.body %> <br>
     파일 <img src="/posts/images/<%= rows.photo_url %>" height="500" width="500"> <br>
 
@@ -18,7 +19,6 @@
             <a href='/posts/delete/<%= rows.id %>'>삭제하기</a>
         <% } %>
     <% } %>  
-   
 </div>
 </body>
 </html>
