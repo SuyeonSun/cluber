@@ -20,7 +20,7 @@
     <form action="/posts/create" method="post" enctype="multipart/form-data">
         <div>작성자(유저네임) <input type="hidden" name="username" value="<%=user.username%>"></div>
         <div>제목 <input type="text" name="title"></div>
-      
+
         <!--대분류 select tag-->
         <div>
           <label for="firstKindU">동아리 종류 선택</label>
@@ -58,8 +58,15 @@
       }
       </script>
 
+      <!--모집기간-->
+      <div>
+        <div>모집 기간</div>
+        <input type="date" name="startDate" id="startDate"> 
+        <input type="date" name="endDate" id="endDate">
+      </div>
+
       <div>내용 <input type="textarea" name="content"></div>
-      <input type="file" id="uploadFile" name="photo"> 
+      파일 <input type="file" id="uploadFile" name="photo"> 
 
       <button type="submit">작성하기</button>
     </form>
