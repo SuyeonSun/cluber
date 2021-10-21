@@ -33,7 +33,7 @@ var hasher = bkfd2Password();
 
 app.set('view engine', 'ejs');
 // app.use(express.static(__dirname+'/public'));
-app.use(express.static('assets')); 
+app.use(express.static('assets')); // <img src="/posts/images/<%= rows.photo_url %>" height="500" width="500">
 app.use('/posts/images',express.static('uploads')); // 파일 업로드
 
 app.use(express.urlencoded({extended:true}));

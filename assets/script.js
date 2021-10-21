@@ -4,7 +4,7 @@ if(commentbtn){
 
         const username = document.getElementById('username').value;
         const text = document.getElementById('text').value;
-        // const id = document.getElementById('id').value;
+        const board_id = document.getElementById('board_id').value; // ############
     
         fetch('/community/add', {
             method: 'POST',
@@ -14,7 +14,7 @@ if(commentbtn){
             body: JSON.stringify({ // JSON 문자열로 변환하기 위해, JSON.stringfy 형식으로 받아오기
                 username: username,
                 text:text,
-                // id:id,
+                board_id:board_id, // ############
             }) // 요청
         }).then(function(res){ // res 주면 @@@@ 응답 한번 주면 그 다음 코드 진행 안함
             console.log(res); //res는 http 통신 요청과 응답에서 응답의 정보를 담고 있는 객체

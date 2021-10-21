@@ -44,16 +44,32 @@ exports.create = (req, res) => {
 }
 
 // show
+// exports.show = (req, res) => {
+//     model.query(`SELECT * FROM community where id = ?`, [req.params.id], (err, rows) => {
+//         // 로그인 안된 상태
+//         if(req.user == undefined) {
+//             res.render('community/show', {rows : rows[0], logged: false});
+//         }
+//         // 로그인 된 상태
+//         else{
+//             res.render('community/show', {rows : rows[0], logged: true, user: req.user});
+//         }
+//     })
+// }
+
 exports.show = (req, res) => {
     model.query(`SELECT * FROM community where id = ?`, [req.params.id], (err, rows) => {
-        // 로그인 안된 상태
-        if(req.user == undefined) {
-            res.render('community/show', {rows : rows[0], logged: false});
-        }
-        // 로그인 된 상태
-        else{
-            res.render('community/show', {rows : rows[0], logged: true, user: req.user});
-        }
+        model.query(`SELECT * FROM comment where board_id=?`, [req.params.id], (err, comments) => {
+            if (err) throw err;
+            // 로그인 안된 상태
+            if(req.user == undefined) {
+                res.render('community/show', {rows : rows[0], comments: comments, logged: false});
+            }
+            // 로그인 된 상태
+            else{
+                res.render('community/show', {rows : rows[0], comments: comments, logged: true, user: req.user});
+            }
+        })
     })
 }
 
@@ -99,10 +115,9 @@ exports.delete = (req, res) => {
 exports.add = (req, res) => {
     var username = req.body.username;
     var text = req.body.text;
-    // var id = req.body.id;
-    // console.log(id);
+    var board_id = req.body.board_id;
 
-    model.query(`INSERT INTO comment SET ?`,{username, text}, (err,rows)=>{
+    model.query(`INSERT INTO comment SET ?`,{username, text, board_id}, (err,rows)=>{
             if(err) throw err;
             res.json({success : 1, message: 'Success Create'});
     }) 
