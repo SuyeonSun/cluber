@@ -25,8 +25,10 @@
     <!--댓글 작성-->
     <% if(logged) { %>
         <h1>댓글 작성</h1>
-        <!-- <div><input type="hidden" name="id" id="id" value="<%#= rows.id %>"></div> -->
-        <div>작성자(유저네임) <input type="hidden" name="username" id="username" value="<%=user.username%>"></div>
+        <!-- 해당 community 글 id -->
+        <div><input type="hidden" name="board_id" id="board_id" value="<%= rows.id %>"></div> 
+        <%#= rows.id %>
+        <div>작성자(유저네임) <input type="hidden" name="username" id="username" value="<%=user.username%>"><%=user.username%></div>
         <div>내용 <input type="textarea" name="text" id="text"></div>
         <button tye="button" id="commentBtn">작성하기</button> 
     <% } %>
@@ -34,6 +36,15 @@
     <% if(!logged) { %>  
         <p>로그인 후 댓글을 작성해주세요.</p>
     <% } %>
+
+    <!-- 댓글 보여주기 -->
+    <h1>댓글</h1>
+    <% comments.forEach(element => { %>
+        <div>
+            <%= element.username %>
+            <%= element.text %> <!--작성자(username)-->
+        </div>
+    <% }); %> 
 
 </div>
 
