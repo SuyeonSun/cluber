@@ -53,6 +53,13 @@
       }
       </script>
 
+    <!--모집기간-->
+    <div>
+            <div>모집 기간</div>
+            <input type="date" name="startDate" id="startDate"> 
+            <input type="date" name="endDate" id="endDate">
+    </div>
+
     <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
     <div>파일 <input type="file" id="uploadFile" name="photo" value = "<%= result.photo_url %>" height="500" width="500"> </div>
 

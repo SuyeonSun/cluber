@@ -18,6 +18,15 @@
         <% } %>
       </div>
       <h1>Home 페이지</h1>
+      
+      <p>별점이 높은 동아리 후기 보러가기!</p>
+        <% rows.forEach(element => { %>
+          <div>
+          <%= element.secondKindU %>
+          <%= element.star %>
+          <a href='/community/show/<%= element.id %>'>보러가기</a> 
+        </div>
+        <% }); %>       
     </div>
   </body>
 </html>

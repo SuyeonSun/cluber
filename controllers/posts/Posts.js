@@ -36,7 +36,9 @@ exports.create = (req, res) => {
     let filename = req.file.filename;
     var firstKindU = req.body.firstKindU;
     var secondKindU  = req.body.secondKindU;
-    model.query(`INSERT INTO board(title, body, username, photo_url, firstKindU, secondKindU) VALUES ("${title}", "${content}", "${username}", "${filename}", "${firstKindU}", "${secondKindU}")`, (err, results) => {
+    var startDate  = req.body.startDate;
+    var endDate  = req.body.endDate;
+    model.query(`INSERT INTO board(title, body, username, photo_url, firstKindU, secondKindU, startDate, endDate) VALUES ("${title}", "${content}", "${username}", "${filename}", "${firstKindU}", "${secondKindU}", "${startDate}", "${endDate}")`, (err, results) => {
         if(err) throw err;
         res.redirect('/posts');
     });
@@ -96,7 +98,9 @@ exports.update = (req, res) => {
     let filename = req.file.filename;
     var firstKindU = req.body.firstKindU;
     var secondKindU  = req.body.secondKindU;
-    model.query(`UPDATE board SET title = "${title}", body = "${content}", photo_url = "${filename}", firstKindU="${firstKindU}", secondKindU="${secondKindU}" where id = ${id}`, (err, rows) => {
+    var startDate  = req.body.startDate;
+    var endDate  = req.body.endDate;
+    model.query(`UPDATE board SET title = "${title}", body = "${content}", photo_url = "${filename}", firstKindU="${firstKindU}", secondKindU="${secondKindU}", startDate="${startDate}", endDate="${endDate}" where id = ${id}`, (err, rows) => {
         if(err) throw err;
         res.redirect(`/posts/show/${id}`);
     });
