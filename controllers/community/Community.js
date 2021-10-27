@@ -1,4 +1,5 @@
 const model = require('../../config/database');
+const { param } = require('../../routes/home');
 
 // index
 exports.index = (req, res) => {
@@ -121,4 +122,13 @@ exports.add = (req, res) => {
             if(err) throw err;
             res.json({success : 1, message: 'Success Create'});
     }) 
+}
+
+// comment delete
+exports.minus = (req, res) => {
+    model.query(`SELECT * FROM community where id = ?`, [req.param.id], (err, rows) => {
+        model.query(`DELETE FROM comcomment where comment_id=?`, [req.params.com_id], (err, comments) => {
+            res.redirect('/community');
+        })
+    })
 }
