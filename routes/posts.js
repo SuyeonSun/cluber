@@ -18,6 +18,7 @@ router.post('/update', upload.single('photo'), Posts.update);
 router.get('/delete/:id', Posts.delete);
 
 // comment
-
+router.post('/add2', Posts.add);
+router.get('/minus2/:com_id', Posts.minus);
 
 module.exports = router;
