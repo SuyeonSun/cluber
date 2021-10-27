@@ -14,5 +14,6 @@ router.get('/delete/:id', Community.delete);
 
 // comment
 router.post('/add', Community.add);
+router.get('/minus/:com_id', Community.minus);
 
 module.exports = router;

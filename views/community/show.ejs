@@ -43,6 +43,13 @@
         <div>
             <%= element.username %>
             <%= element.text %> <!--작성자(username)-->
+
+            <!-- 댓글 삭제하기 -->
+            <% if(logged) { %>
+                <% if(user.username == element.username) { %>
+                  <a href='/community/minus/<%= element.comment_id %>'>삭제하기</a>
+                <% } %> 
+              <% } %> 
         </div>
     <% }); %> 
 
