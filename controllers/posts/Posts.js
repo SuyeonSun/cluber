@@ -53,17 +53,32 @@ exports.create = (req, res) => {
 // }
 
 // show
+// exports.show = (req, res) => {
+//     model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
+//         if(err) throw err;
+//         // 로그인 안된 상태
+//         if(req.user == undefined) {
+//             res.render('posts/show', {rows : rows[0], logged: false});
+//         }
+//         // 로그인 된 상태
+//         else{
+//             res.render('posts/show', {rows : rows[0], logged: true, user : req.user});
+//         }
+//     })
+// }
 exports.show = (req, res) => {
     model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
-        if(err) throw err;
-        // 로그인 안된 상태
-        if(req.user == undefined) {
-            res.render('posts/show', {rows : rows[0], logged: false});
-        }
-        // 로그인 된 상태
-        else{
-            res.render('posts/show', {rows : rows[0], logged: true, user : req.user});
-        }
+        model.query(`SELECT * FROM boardcomment where post_id=?`, [req.params.id], (err, comments) => {
+            if (err) throw err;
+            // 로그인 안된 상태
+            if(req.user == undefined) {
+                res.render('posts/show', {rows : rows[0], comments: comments, logged: false});
+            }
+            // 로그인 된 상태
+            else{
+                res.render('posts/show', {rows : rows[0], comments: comments, logged: true, user: req.user});
+            }
+        })
     })
 }
 
@@ -113,4 +128,25 @@ exports.delete = (req, res) => {
         if(err) throw err;
         res.redirect('/posts');
     });
+}
+
+// comment add
+exports.add = (req, res) => {
+    var username = req.body.username;
+    var text = req.body.text;
+    var post_id = req.body.post_id;
+
+    model.query(`INSERT INTO boardcomment SET ?`,{username, text, post_id}, (err,rows)=>{
+            if(err) throw err;
+            res.json({success : 1, message: 'Success Create'});
+    }) 
+}
+
+// comment delete
+exports.minus = (req, res) => {
+    model.query(`SELECT * FROM board where id = ?`, [req.params.id], (err, rows) => {
+        model.query(`DELETE FROM boardcomment where comment_id=?`, [req.params.com_id], (err, comments) => {
+            res.redirect(`/posts`);
+        })
+    })
 }

@@ -20,6 +20,41 @@
             <a href='/posts/delete/<%= rows.id %>'>삭제하기</a>
         <% } %>
     <% } %>  
+
+    <!--댓글작성-->
+    <% if(logged) { %>
+      <h1>댓글 작성</h1>
+      <!-- 해당 community 글 id -->
+      <div><input type="hidden" name="post_id" id="post_id" value="<%= rows.id %>"></div> 
+      <%#= rows.id %>
+      <div>작성자(유저네임) <input type="hidden" name="username" id="username" value="<%=user.username%>"><%=user.username%></div>
+      <div>내용 <input type="textarea" name="text" id="text"></div>
+      <button tye="button" id="commentBtn2">작성하기</button> 
+  <% } %>
+
+  <% if(!logged) { %>  
+    <p>로그인 후 댓글을 작성해주세요.</p>
+  <% } %>
+
+  <!-- 댓글 보여주기 -->
+  <h1>댓글</h1>
+  <% comments.forEach(element => { %>
+      <div>
+          <%= element.username %>
+          <%= element.text %> <!--작성자(username)-->
+
+          <!--댓글 삭제하기-->
+          <% if(logged) { %>
+            <% if(user.username == element.username) { %>
+              <a href='/posts/minus2/<%= element.comment_id %>'>삭제하기</a>
+            <% } %> 
+          <% } %> 
+      </div>
+  <% }); %> 
+
 </div>
+
+<!--script-->
+<script src="/script.js"></script>
 </body>
 </html>

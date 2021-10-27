@@ -22,11 +22,18 @@
       <p>별점이 높은 동아리 후기 보러가기!</p>
         <% rows.forEach(element => { %>
           <div>
-          <%= element.secondKindU %>
-          <%= element.star %>
+            <%= element.secondKindU %>
+            <%= element.star %>
           <a href='/community/show/<%= element.id %>'>보러가기</a> 
-        </div>
-        <% }); %>       
+          </div>
+        <% }); %>   
+        
+        <p>모집중인 동아리!</p>
+        <% rows2.forEach(element => { %>
+          <div>
+            <%= element.secondKindU %>
+          </div>
+        <% }); %>  
     </div>
   </body>
 </html>
