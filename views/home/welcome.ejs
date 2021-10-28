@@ -19,6 +19,7 @@
       </div>
       <h1>Home 페이지</h1>
       
+      <div>
       <p>별점이 높은 동아리 후기 보러가기!</p>
         <% rows.forEach(element => { %>
           <div>
@@ -26,14 +27,24 @@
             <%= element.star %>
           <a href='/community/show/<%= element.id %>'>보러가기</a> 
           </div>
-        <% }); %>   
-        
-        <p>모집중인 동아리!</p>
-        <% rows2.forEach(element => { %>
-          <div>
-            <%= element.secondKindU %>
-          </div>
         <% }); %>  
+      </div> 
+        
+      <div>
+      <p>모집중인 동아리!</p> 
+      <!--아직 모집 중인 동아리가 없다면-->
+      <% if(rows2 == null || rows2.length == 0){ %>
+        <tr>
+          <td> 아직 작성된 모집중인 동아리가 없습니다. </td>
+        </tr>
+      <% } %>
+      <% rows2.forEach(element => { %>
+        <div>
+          <%= element.secondKindU %>
+        </div>
+      <% }); %>  
+      </div>
+
     </div>
   </body>
 </html>
