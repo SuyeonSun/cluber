@@ -48,7 +48,7 @@ exports.new = (req, res) => {
             if(err) throw err;
             // console.log(rows);
             if(rows.length>0){
-                res.send("<script>alert('이미 존재하는 이메일');location.href='/register';</script>");
+                res.send("<script>alert('이미 존재하는 유저네임');location.href='/register';</script>");
             }
             else{
                 model.query('INSERT INTO users SET ?', user, 

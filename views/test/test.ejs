@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
+    <h1>테스트 페이지</h1>
+
+    <form action="/test/create" method="post">
+    <!-- MBTI -->
+    <div>
+        <label for="Q1">Q1.</label>
+        <label><input type="radio" name="Q1" value="E"> 다양한 사람들과 일한다</label>
+        <label><input type="radio" name="Q1" value="I"> 혼자서 일한다</label>
+    </div>
+
+    <div>
+        <label for="Q2">Q2.</label>
+        <label><input type="radio" name="Q2" value="S"> 숲보단 나무를 본다 </label>
+        <label><input type="radio" name="Q2" value="N"> 나무보단 숲을 본다</label>
+    </div>
+
+    <div>
+        <label for="Q3">Q3.친구가 시험에 떨어졌다고 했을 때 나의 반응은?</label>
+        <label><input type="radio" name="Q3" value="T"> 무슨 시험인데? 왜 떨어졌어? </label>
+        <label><input type="radio" name="Q3" value="F"> 어떡해 힘들겠다 ㅠㅠ </label>
+    </div>
+
+    <div>
+        <label for="Q4">Q4. </label>
+        <label><input type="radio" name="Q4" value="J"> 계획적이다  </label>
+        <label><input type="radio" name="Q4" value="P"> 상황에 따라 유연하게 대처한다</label>
+    </div>
+
+    <!-- 관심분야 -->
+    <div>
+        <div>
+            <label for="category">조금이라도 관심이 있거나 진로의 방향과 유사한 분야를 선택해주세요. (단일 선택) </label>
+        </div>
+        <label><input type="checkbox" name="category" value="예술">예술</label>
+        <label><input type="checkbox" name="category" value="음악">음악</label>
+        <label><input type="checkbox" name="category" value="스포츠">스포츠</label>
+        <label><input type="checkbox" name="category" value="금융">금융</label>
+        <label><input type="checkbox" name="category" value="학술">학술</label>
+        <label><input type="checkbox" name="category" value="외국어">외국어</label>
+        <label><input type="checkbox" name="category" value="봉사">봉사</label>
+        <label><input type="checkbox" name="category" value="IT">IT</label>
+        <label><input type="checkbox" name="category" value="문예창작">문예창작</label>
+    </div>
+
+    <button type="submit">테스트하기</button>
+    </form>
+    </div>
+
+</body>
+</html>

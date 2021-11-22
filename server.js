@@ -57,4 +57,4 @@ app.get('/logout', function(req, res){
     });
 });
 app.use('/community', require('./routes/community'));
-
+app.use('/test', require('./routes/test'));

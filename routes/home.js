@@ -29,7 +29,7 @@ function dateFormat(date) {
 }
 
 var date = dateFormat(new Date());
-console.log(date);
+// console.log(date);
 
 router.get('/', function(req, res){
   model.query(`SELECT * FROM community WHERE star >= 4`, (err, rows) => {
