@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
+    <h1>테스트 결과 페이지</h1>
+    <% if(rows == null || rows.length == 0){ %>
+        <tr>
+          <td> 결과값이 없습니다. </td>
+        </tr>
+    <% } %>
+
+    <% rows.forEach(element => { %>
+        <%= element.test_result %>
+    <% }); %> 
+    </div>
+</body>
+</html>
