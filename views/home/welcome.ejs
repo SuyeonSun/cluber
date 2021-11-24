@@ -14,36 +14,45 @@
         <% if(!logged) { %>
           <p> 아직 회원이 아니세요? 회원가입하고 서비스를 이용해보세요!</p>
         <% } else { %>
-          <label><%=user.username %>님, 환영합니다!</label>
+          <div style="text-align: center;"><h3><b><%=user.username %></b>님, 환영합니다.</h3></div>
+          <div style="text-align: center;"><h5>Cluber로 단국대학교 교내 동아리를 추천받으세요!</h5></div>
         <% } %>
       </div>
-      <h1>Home 페이지</h1>
+      <!-- <h1>Home 페이지</h1> -->
       
+      <div class="jumbotron">
       <div>
-      <p>별점이 높은 동아리 후기 보러가기!</p>
+      <b><p>별점이 높은 동아리 후기!</p></b>
+
+      <div class="list-group list-group-flush">
         <% rows.forEach(element => { %>
-          <div>
+          <div class="list-group-item" style="">
             <%= element.secondKindU %>
             <%= element.star %>
           <a href='/community/show/<%= element.id %>'>보러가기</a> 
-          </div>
+        </div>
         <% }); %>  
       </div> 
+    </div>
         
-      <div>
-      <p>모집중인 동아리!</p> 
+      <div style="margin-top: 60px;">
+      <b><p>현재 모집중이에요 :)</p> </b>
       <!--아직 모집 중인 동아리가 없다면-->
+      <div class="list-group list-group-flush">
       <% if(rows2 == null || rows2.length == 0){ %>
         <tr>
           <td> 아직 작성된 모집중인 동아리가 없습니다. </td>
         </tr>
       <% } %>
       <% rows2.forEach(element => { %>
-        <div>
+        
+        <div class="list-group-item" style="">
           <%= element.secondKindU %>
         </div>
       <% }); %>  
+    </div>
       </div>
+    </div>
 
     </div>
   </body>

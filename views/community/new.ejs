@@ -6,13 +6,27 @@
 <body>
     <%- include('../partials/nav') %>
     <div class="container mb-3">
-    <h1>커뮤니티 글 작성 페이지</h1>
+    <div class="jumbotron">
+    <h1>커뮤니티 글 작성하기</h1>
     <form action="/community/create" method="post">
-        <div>작성자(유저네임) <input type="hidden" name="username" value="<%=user.username%>"></div>
-        <div>제목 <input type="text" name="title"></div>
-        <div>내용 <input type="textarea" name="content"></div>
+        <div><input type="hidden" name="username" value="<%=user.username%>"></div>
 
-        <p>후기를 작성하셨다면, 보다 정확한 분류를 위해 다음을 선택해주세요.</p>
+
+        <div class="input-group mb-3" style="margin-top: 40px;">
+            <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+            <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">내용</span>
+            <input type="textarea" name="content" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="height: 300px;">
+        </div>
+
+        <!-- <div>제목 <input type="text" name="title"></div>
+        <div>내용 <input type="textarea" name="content"></div> -->
+
+        <p>잠깐! 후기를 작성하셨다면, 정확한 분류를 위해 다음을 선택해주세요 :) </p>
         <!--대분류 select tag-->
         <div>
             <label for="firstKindU">동아리 종류 선택</label>
@@ -35,9 +49,9 @@
         <!--js-->
         <script>
             function KindChange(e) {
-            var art = ["동아리1"];
-            var vol = ["동아리2", "동아리3", "동아리4"];
-            var com = ["천안", "세종", "논산"];
+            var art = ["자드락", "가객"];
+            var vol = ["인액터스", "미소"];
+            var com = ["CAGI", "Aegis"];
             var target = document.getElementById("secondKindU");
             if(e.value == "공연/예술/음악") var d = art;
             else if(e.value == "봉사") var d = vol;
@@ -80,9 +94,9 @@
                     </select>
             </div>
 
-        <button type="submit">작성하기</button>
+        <button type="submit" class="btn btn-outline-secondary">작성하기</button>
     </form>
 </div>
-
+</div>
 </body>
 </html>

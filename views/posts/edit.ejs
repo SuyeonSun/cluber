@@ -7,12 +7,17 @@
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
+    <div class="jumbotron">
     <h1>수정 페이지 입니다.</h1>
-    <p>파일을 필수로 입력해야 합니다.</p>
     <form action="/posts/update" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%=result.id%>"/>
-        <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div>
-        
+
+        <!-- <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div> -->
+      <div class="input-group mb-3" style="margin-top: 40px;">
+          <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+          <input type="text" name="title" value = "<%= result.title %>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+
         <div>
           <label for="firstKindU">동아리 종류 선택</label>
           <select id="firstKindU" name="firstKindU" onchange="KindChange(this)">
@@ -55,16 +60,23 @@
 
     <!--모집기간-->
     <div>
-            <div>모집 기간</div>
+            모집 기간
             <input type="date" name="startDate" id="startDate"> 
             <input type="date" name="endDate" id="endDate">
     </div>
 
-    <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
-    <div>파일 <input type="file" id="uploadFile" name="photo" value = "<%= result.photo_url %>" height="500" width="500"> </div>
+        <!-- <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div> -->
+    <div class="input-group mb-3" style="margin-top: 30px;">
+      <span class="input-group-text" id="inputGroup-sizing-default">내용</span>
+      <input type="textarea" name="content" value = "<%= result.body %>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="height: 300px;">
+  </div>
 
-    <button type="submit">수정하기</button>
+    <div>파일 <input type="file" id="uploadFile" name="photo" value = "<%= result.photo_url %>" height="500" width="500"> </div>
+    <div><p>(홍보 포스터를 필수로 업로드 해야 합니다.)</p></div>
+
+    <button type="submit" class="btn btn-outline-secondary">수정하기</button>
     </form>
+</div>
 </div>
 </body>
 </html>

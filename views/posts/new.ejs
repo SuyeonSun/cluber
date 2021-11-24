@@ -7,6 +7,7 @@
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
+      <div class="jumbotron">
     <!-- <h1>글 작성 페이지</h1>
     <form action="/posts/create" method="post">
         <div>작성자(유저네임) <input type="text" name="username" value="<%#=user.username%>"></div>
@@ -15,11 +16,17 @@
         <button type="submit">작성하기</button>
     </form> -->
     
-    <h1>글 작성 페이지</h1>
-    <p>파일을 필수로 입력해야 합니다.</p>
+    <h1>홍보 글 작성하기</h1>
     <form action="/posts/create" method="post" enctype="multipart/form-data">
-        <div>작성자(유저네임) <input type="hidden" name="username" value="<%=user.username%>"></div>
-        <div>제목 <input type="text" name="title"></div>
+
+    <div><input type="hidden" name="username" value="<%=user.username%>"></div>
+
+    <div class="input-group mb-3" style="margin-top: 40px;">
+        <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+        <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+        <!-- <div>제목 <input type="text" name="title"></div> -->
 
         <!--대분류 select tag-->
         <div>
@@ -41,9 +48,9 @@
       <!--js-->
       <script>
           function KindChange(e) {
-          var art = ["동아리1"];
-          var vol = ["동아리2", "동아리3", "동아리4"];
-          var com = ["천안", "세종", "논산"];
+          var art = ["자드락", "가객"];
+          var vol = ["인액터스", "미소"];
+          var com = ["CAGI", "Aegis"];
           var target = document.getElementById("secondKindU");
           if(e.value == "공연/예술/음악") var d = art;
           else if(e.value == "봉사") var d = vol;
@@ -60,16 +67,23 @@
 
       <!--모집기간-->
       <div>
-        <div>모집 기간</div>
+        모집 기간
         <input type="date" name="startDate" id="startDate"> 
         <input type="date" name="endDate" id="endDate">
       </div>
 
-      <div>내용 <input type="textarea" name="content"></div>
-      파일 <input type="file" id="uploadFile" name="photo"> 
+      <div class="input-group mb-3" style="margin-top: 30px;">
+        <span class="input-group-text" id="inputGroup-sizing-default">내용</span>
+        <input type="textarea" name="content" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="height: 300px;">
+      </div>
 
-      <button type="submit">작성하기</button>
+      <!-- <div>내용 <input type="textarea" name="content"></div> -->
+      파일 <input type="file" id="uploadFile" name="photo"> 
+      <div><p>(홍보 포스터를 필수로 업로드 해야 합니다.)</p></div>
+
+      <button type="submit" class="btn btn-outline-secondary">작성하기</button>
     </form>
+</div>
 </div>
 </body>
 </html>

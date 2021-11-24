@@ -6,16 +6,25 @@
 <body>
     <%- include('../partials/nav') %>
     <div class="container mb-3">
-    <h1>테스트 결과 페이지</h1>
-    <% if(rows == null || rows.length == 0){ %>
-        <tr>
-          <td> 결과값이 없습니다. </td>
-        </tr>
-    <% } %>
-
-    <% rows.forEach(element => { %>
-        <%= element.test_result %>
-    <% }); %> 
+        <div class="jumbotron">
+        <h1>테스트 결과 페이지</h1>
+        <% if(rows == null || rows.length == 0){ %>
+            <tr>
+              <td> 결과값이 없습니다. </td>
+            </tr>
+        <% } %>
+    
+        <p> 🎨 당신의 관심사 테스트 결과입니다. </p>
+        <p> 🎈 당신은 이런 동아리와 맞아요. </p>
+    
+    <h5><b>
+        <% rows.forEach(element => { %>
+            <%= element.test_result %>
+        <% }); %>
+    </b></h5>
+    
+        <p> 동아리에 대한 자세한 정보는 '홍보 게시판'을 통해 더 알아보세요:)</p>
+    </div>
     </div>
 </body>
 </html>

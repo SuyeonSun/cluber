@@ -6,19 +6,29 @@
     <%- include('../partials/nav') %>
     <div class="container mb-3">
 
+    <div class="jumbotron">
     <h1>커뮤니티 페이지</h1>
-    <a href="/community/new">커뮤니티 글 작성하러 가기</a>
+    
+
+    <div type="button" class="btn btn-outline-secondary" style="margin-bottom: 30px; margin-top: 30px;"><a href="/community/new">커뮤니티 글 작성하기</a></div>
+
     <% if(rows == null || rows.length == 0){ %>
         <tr>
           <td> 아직 작성된 글이 없습니다. </td>
         </tr>
     <% } %>
-
+    
+<div class="list-group list-group-flush">
     <% rows.forEach(element => { %>
-        <%= element.title %>
-        <%= element.username %> <!--작성자(username)-->
-        <a href='/community/show/<%= element.id %>'>상세보기</a>
+    <div class="list-group-item" style="">
+        <p style="margin:0; padding:0">제목: <%= element.title %></p>
+        <p style="margin:0; padding:0">작성자: <%= element.username %></p> <!--작성자(username)-->
+        <a href='/community/show/<%= element.id %> class="btn btn-primary"'>상세보기</a>
+    </div>
     <% }); %> 
+</div>
+
+</div>
 </div>
 </body>
 </html>
