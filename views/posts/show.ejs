@@ -6,42 +6,73 @@
   <body>
     <%- include('../partials/nav') %>
     <div class="container mb-3">
-    <h1>상세 페이지 입니다.</h1>
-    작성자 <%= rows.username %> <br>
-    제목 <%= rows.title %> <br>
-    동아리 이름 <%= rows.secondKindU %> <br>
-    모집기간 <%= rows.startDate %> 부터 <%= rows.endDate %> 까지 <br> 
-    내용 <%= rows.body %> <br>
-    파일 <img src="/posts/images/<%= rows.photo_url %>" height="500" width="500"> <br>
+      <div class="jumbotron">
+    <!-- <h1>상세 페이지 입니다.</h1> -->
+    <!-- 작성자 <%#= rows.username %> <br>
+    제목 <%#= rows.title %> <br>
+    동아리 이름 <%#= rows.secondKindU %> <br>
+    모집기간 <%#= rows.startDate %> 부터 <%#= rows.endDate %> 까지 <br> 
+    내용 <%#= rows.body %> <br>
+    파일 <img src="/posts/images/<%#= rows.photo_url %>" height="500" width="500"> <br> -->
+
+    <div class="card" style="width: 54rem;">
+      <div class="card-header">
+          제목: <%= rows.title %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">작성자: <%= rows.username %> </li>
+        <li class="list-group-item">동아리 이름: <%= rows.secondKindU %></li>
+        <li class="list-group-item">모집기간: <%= rows.startDate %> 부터 <%= rows.endDate %> 까지</li>
+        <li class="list-group-item" style="height: 300px;">내용: <%= rows.body %></li>
+        <li class="list-group-item">파일: <img src="/posts/images/<%= rows.photo_url %>" height="500" width="500"></li>
+      </ul>
+  </div>
 
     <% if(logged) { %>
         <% if(user.username == rows.username) { %>
-            <a href='/posts/edit/<%= rows.id %>'>수정하기</a>
-            <a href='/posts/delete/<%= rows.id %>'>삭제하기</a>
+            <!-- <a href='/posts/edit/<%#= rows.id %>'>수정하기</a> -->
+            <div type="button" class="btn btn-outline-secondary" style="margin-bottom: 30px; margin-top: 30px;"><a href='/posts/edit/<%= rows.id %>'>수정하기</a></div>
+
+            <!-- <a href='/posts/delete/<%#= rows.id %>'>삭제하기</a> -->
+            <div type="button" class="btn btn-outline-secondary" style="margin-bottom: 30px; margin-top: 30px;"><a href='/posts/delete/<%= rows.id %>'>삭제하기</a></div>
+
         <% } %>
     <% } %>  
 
     <!--댓글작성-->
+    <div style="">
     <% if(logged) { %>
-      <h1>댓글 작성</h1>
+      <h5>댓글을 작성해주세요 :)</h5>
       <!-- 해당 community 글 id -->
       <div><input type="hidden" name="post_id" id="post_id" value="<%= rows.id %>"></div> 
       <%#= rows.id %>
-      <div>작성자(유저네임) <input type="hidden" name="username" id="username" value="<%=user.username%>"><%=user.username%></div>
-      <div>내용 <input type="textarea" name="text" id="text"></div>
-      <button tye="button" id="commentBtn2">작성하기</button> 
+      <div>작성자 <input type="hidden" name="username" id="username" value="<%=user.username%>"><%=user.username%></div>
+      
+      <!-- <div>내용 <input type="textarea" name="text" id="text"></div> -->
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">내용</span>
+        <input type="textarea" name="text" id="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="height: 100px;">
+      </div>
+
+      <!-- <button tye="button" id="commentBtn2">작성하기</button>  -->
+      <button type="button" id="commentBtn2" class="btn btn-outline-secondary">작성하기</button>
+
   <% } %>
 
   <% if(!logged) { %>  
     <p>로그인 후 댓글을 작성해주세요.</p>
   <% } %>
+  </div>
 
   <!-- 댓글 보여주기 -->
-  <h1>댓글</h1>
+  <div style="margin-top: 30px">
+    <h5>작성된 댓글입니다 :)</h5>
+    <div class="list-group list-group-flush">
   <% comments.forEach(element => { %>
-      <div>
-          <%= element.username %>
-          <%= element.text %> <!--작성자(username)-->
+    <div class="list-group-item" style="">
+      <b><p style="margin:0; padding:0"><%= element.username %></p></b>
+      <p style="margin:0; padding:0"><%= element.text %></p>
+           <!--작성자(username)-->
 
           <!--댓글 삭제하기-->
           <% if(logged) { %>
@@ -51,7 +82,10 @@
           <% } %> 
       </div>
   <% }); %> 
+ </div>
+</div>
 
+</div>
 </div>
 
 <!--script-->

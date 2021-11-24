@@ -7,11 +7,24 @@
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
+    <div class="jumbotron">
     <h1>수정 페이지 입니다.</h1>
     <form action="/community/update" method="post">
         <input type="hidden" name="id" value="<%=result.id%>"/>
-        <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div>
-        <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div>
+
+        <!-- <div>제목 <input type="text" name="title" value = "<%= result.title %>"></div> -->
+        <div class="input-group mb-3" style="margin-top: 40px;">
+            <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+            <input type="text" name="title" value = "<%= result.title %>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+        <!-- <div>내용 <input type="textarea" name="content" value = "<%= result.body %>"></div> -->
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">내용</span>
+            <input type="textarea" name="content" value = "<%= result.body %>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="height: 300px;">
+        </div>
+
         <div>
             <label for="firstKindU">동아리 종류 선택</label>
             <select id="firstKindU" name="firstKindU" onchange="KindChange(this)">
@@ -77,8 +90,10 @@
                         <option value="5">5</option>
                     </select>
             </div>
-        <button type="submit">수정하기</button>
+        <button type="submit" class="btn btn-outline-secondary">수정하기</button>
+
     </form>
+</div>
 </div>
 </body>
 </html>
