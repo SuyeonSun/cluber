@@ -47,6 +47,6 @@
   <img width="1152" alt="스크린샷 2021-11-25 오후 10 13 04" src="https://github.com/SuyeonSun/perfect_trip/assets/77823761/45bec6ec-c0ca-4c3e-b674-52d6c1172149">
   <img width="1155" alt="홍보 게시판1" src="https://github.com/SuyeonSun/perfect_trip/assets/77823761/b9b166ce-26ce-4f8a-956d-a6134f4759f2">
 * 커뮤니티 게시판을 활용해 동아리 관련 정보를 공유할 수 있습니다.
-<img width="371" alt="홍보 게시판2" src="https://github.com/SuyeonSun/perfect_trip/assets/77823761/2fe03be5-eb78-4399-b3c3-f04b9cbdc95d">
-<img width="1139" alt="커뮤티니2" src="https://github.com/SuyeonSun/perfect_trip/assets/77823761/6b1807eb-500f-48bd-8b65-170b4ab31c4b">
+  <img width="371" alt="홍보 게시판2" src="https://github.com/SuyeonSun/perfect_trip/assets/77823761/2fe03be5-eb78-4399-b3c3-f04b9cbdc95d">
+  <img width="1139" alt="커뮤티니2" src="https://github.com/SuyeonSun/perfect_trip/assets/77823761/6b1807eb-500f-48bd-8b65-170b4ab31c4b">
 
